@@ -45,4 +45,12 @@ class HybridCarFactory implements CarFactory {
     }
 }
 
+$carFactory = new ElectricCarFactory();
+$car = $carFactory->createCar();
+
+$carFactory = new PetrolCarFactory();
+$car = $carFactory->createCar();
+
+$carFactory = new HybridCarFactory();
+$car = $carFactory->createCar();
 
