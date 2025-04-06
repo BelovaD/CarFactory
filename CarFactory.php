@@ -10,17 +10,37 @@ class ElectricCar implements Car {
     public function hasElectricEngine(): bool {
         return true;
     }
+    public function hasGasolineEngine(): bool{
+        return false;
+    }
+    public function hasHybridEngine(): bool{
+        return false;
+    }
 }
 
 class PetrolCar implements Car {
+
     public function hasGasolineEngine(): bool{
         return true;
+    }
+    public function hasElectricEngine(): bool {
+        return false;
+    }
+    public function hasHybridEngine(): bool{
+        return false;
     }
 }
 
 class HybridCar implements Car {
     public function hasHybridEngine(): bool{
         return true;
+    }
+    
+    public function hasElectricEngine(): bool {
+        return false;
+    }
+    public function hasGasolineEngine(): bool{
+        return false;
     }
     
 }
