@@ -25,3 +25,24 @@ class HybridCar implements Car {
     
 }
 
+interface carFactory {
+    public function createCar(): Car;
+}
+
+class ElectricCarFactory implements CarFactory {
+    public function createCar(): Car{
+        return new ElectricCar();
+    }
+}
+class PetrolCarFactory implements CarFactory {
+    public function createCar(): Car {
+        return new PetrolCar();
+    }
+}
+class HybridCarFactory implements CarFactory {
+    public function createCar(): Car {
+        return new HybridCar();
+    }
+}
+
+
