@@ -67,6 +67,10 @@ class BrakeSystem {
     }
 }
 
+class Car {
+
+}
+
 class CarBuilder {
     protected $engine;
     protected $transmission;
