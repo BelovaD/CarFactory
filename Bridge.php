@@ -10,7 +10,7 @@ interface Device {
     
 }
 
-class Radio implements Device {
+abstract class Radio implements Device {
     private int $min_volume = 0;
     private int $max_volume = 10;
     private int $min_channel = 0;
@@ -106,21 +106,21 @@ abstract class Remote {
         } else {
             $need_volume = $this->prev_volume;
         }
-        $$this->device->setVolume($need_volume);
+        $this->device->setVolume($need_volume);
     }
 }
 
 $radio = new Radio();
 echo 'Volume: ' . $radio->getVolume() . PHP_EOL;
 echo 'Channel: ' . $radio->getChannel() . PHP_EOL;
-$$remote = new AdvancedRemote($radio);
+$remote = new AdvancedRemote($radio);
 $radio->setVolume(2);
 $$radio->setChannel(3);
 echo 'Volume: ' . $radio->getVolume() . PHP_EOL;
 echo 'Channel: ' . $radio->getChannel() . PHP_EOL;
 $remote->togglePower();
 $radio->setVolume(2);
-$$radio->setChannel(3);
+$radio->setChannel(3);
 echo 'Volume: ' . $radio->getVolume() . PHP_EOL;
 echo 'Channel: ' . $radio->getChannel() . PHP_EOL;
 $remote->volumeUp();
