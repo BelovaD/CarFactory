@@ -45,7 +45,7 @@ abstract class RemoteControl {
     }
 }
 
-class TV extends AbstractDevice {
+abstract class TV extends AbstractDevice {
     protected string $type;
 
     public function __construct(string $brand) {
@@ -63,7 +63,7 @@ class TV extends AbstractDevice {
     }
 }
 
-class Light extends AbstractDevice {
+abstract class Light extends AbstractDevice {
     protected string $type;
 
     public function __construct(string $type) {
@@ -81,25 +81,25 @@ class Light extends AbstractDevice {
     }
 }
 
-class SonyTV extends TV {
+abstract class SonyTV extends TV {
     public function __construct() {
         parent::__construct('Sony');
     }
 }
 
-class SamsungTV extends TV {
+abstract class SamsungTV extends TV {
     public function __construct() {
         parent::__construct(brand: 'Samsung');
     }
 }
 
-class PhilipsLight extends Light {
+abstract class PhilipsLight extends Light {
     public function __construct() {
         parent::__construct('Philips');
     }
 }
 
-class IKEALight extends Light {
+abstract class IKEALight extends Light {
     public function __construct() {
         parent::__construct('IKEA');
     }

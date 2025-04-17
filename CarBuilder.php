@@ -120,3 +120,67 @@ class CarBuilder {
             $this->brakeSystem);
     }
 }
+
+
+class SedanBuilder implements CarBuilder{
+    private $car;
+
+    public function __construct()
+    {
+        $this->car = new Car(null, null, null,null, null);
+    }
+
+    public function setEngine(Engine $engine): void
+    {
+        $this->car->engine = $engine;
+    }
+
+    public function setTransmission(Transmission $transmission): void
+    {
+        $this->car->transmission = $transmission;
+    }
+
+    public function setBody(Body $body): void
+    {
+        $this->car->body = $body;
+    }
+
+    public function setControlSystem(ControlSystem $controlSystem): void {
+        $this->controlSystem = $controlSystem;
+    }
+
+    public function setBrakeSystem(BrakeSystem $brakeSystem): void {
+        $this->brakeSystem = $brakeSystem;
+    }
+
+    public function getCar(): Car
+    {
+        return $this->car;
+    }
+}
+
+
+class CarDirector
+{
+    private $builder;
+
+    public function __construct(CarBuilder $builder)
+    {
+        $this->builder = $builder;
+    }
+
+    public function buildCar(): Car
+    {
+        $engine = new Engine('V6', '210','4');
+        $transmission = new Transmission('automatic');
+        $body = new Body('SUV','red');
+        $brakeSystem = new brakeSystem('disc brake');
+        $controlSystem = new controlSystem('gear - rack');
+
+        $this->builder->setEngine($engine);
+        $this->builder->setTransmission($transmission);
+        $this->builder->setBody($body);
+
+        return $this->builder->getCar();
+    }
+}
