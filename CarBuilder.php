@@ -127,7 +127,81 @@ class SedanBuilder implements CarBuilder{
 
     public function __construct()
     {
-        $this->car = new Car(null, null, null,null, null);
+        $this->car = new Car(' V4 ', ' mechanical ', ' sedan ',' electric power steering ', ' disk and drums brakes ');
+    }
+
+    public function setEngine(Engine $engine): void
+    {
+        $this->car->engine = $engine;
+    }
+
+    public function setTransmission(Transmission $transmission): void
+    {
+        $this->car->transmission = $transmission;
+    }
+
+    public function setBody(Body $body): void
+    {
+        $this->car->body = $body;
+    }
+
+    public function setControlSystem(ControlSystem $controlSystem): void {
+        $this->controlSystem = $controlSystem;
+    }
+
+    public function setBrakeSystem(BrakeSystem $brakeSystem): void {
+        $this->brakeSystem = $brakeSystem;
+    }
+
+    public function getCar(): Car
+    {
+        return $this->car;
+    }
+}
+
+class SUVBuilder implements CarBuilder{
+    private $car;
+
+    public function __construct()
+    {
+        $this->car = new Car(' V6 ', ' automatic ', ' SUV ',' gear - rack ', ' disc brake ');
+    }
+
+    public function setEngine(Engine $engine): void
+    {
+        $this->car->engine = $engine;
+    }
+
+    public function setTransmission(Transmission $transmission): void
+    {
+        $this->car->transmission = $transmission;
+    }
+
+    public function setBody(Body $body): void
+    {
+        $this->car->body = $body;
+    }
+
+    public function setControlSystem(ControlSystem $controlSystem): void {
+        $this->controlSystem = $controlSystem;
+    }
+
+    public function setBrakeSystem(BrakeSystem $brakeSystem): void {
+        $this->brakeSystem = $brakeSystem;
+    }
+
+    public function getCar(): Car
+    {
+        return $this->car;
+    }
+}
+
+class SportsCarBuilder implements CarBuilder{
+    private $car;
+
+    public function __construct()
+    {
+        $this->car = new Car('V8', 'automatic', 'sport', 'automatic','disc brake');
     }
 
     public function setEngine(Engine $engine): void
@@ -184,3 +258,13 @@ class CarDirector
         return $this->builder->getCar();
     }
 }
+$sedanBuilder = new SedanBuilder();
+$carDirector = new CarDirector($sedanBuilder);
+$sedan = $carDirector->buildCar();
+
+echo 'Автомобиль собран: ' . $sedan->body->type .
+ ' с двигателем ' . $sedan->engine->type .
+ ' трансмиссией ' . $sedan->transmission->type . 
+' типом управления ' . $sedan->controlSystem->type . 
+'типом тормозов '. $sedan->brakeSystem->type;
+?>
