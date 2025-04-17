@@ -254,6 +254,8 @@ class CarDirector
         $this->builder->setEngine($engine);
         $this->builder->setTransmission($transmission);
         $this->builder->setBody($body);
+        $this->builder->setControlSystem($controlSystem);
+        $this->builder->setBrakeSystem($brakeSystem);
 
         return $this->builder->getCar();
     }
