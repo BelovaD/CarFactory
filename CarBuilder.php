@@ -68,7 +68,20 @@ class BrakeSystem {
 }
 
 class Car {
+    public $engine;
+    public $transmission;
+    public $body;
+    public $controlSystem;
+    public $brakeSystem;
 
+    public function __construct(Engine $engine, Transmission $transmission, Body $body, ControlSystem $controlSystem, BrakeSystem $brakeSystem)
+    {
+        $this->engine = $engine;
+        $this->transmission = $transmission;
+        $this->body = $body;
+        $this->controlSystem = $controlSystem;
+        $this->brakeSystem = $brakeSystem;
+    }
 }
 
 class CarBuilder {
